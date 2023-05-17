@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Top 10 Songs</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet"/>
+  <script>
+window.addEventListener("load", function() {
+  document.getElementById("show-me").addEventListener("click", function() {
+    var topSongsDiv = document.getElementById("top-songs");
+    if (topSongsDiv.style.display === "none") {
+      topSongsDiv.style.display = "block";
+      this.textContent = "Hide Me !";
+    } else {
+      topSongsDiv.style.display = "none";
+      this.textContent = "Show Me !";
+    }
+  });
+});
+    </script>
+</head>
+<body>
+  <div class="container">
+    <section>
+    <h1><i class="fas fa-music"></i> Top 10 Songs</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque euismod, enim eget scelerisque semper, enim eros ultricies sapien, eget semper velit ipsum ac ligula. Donec luctus, urna ac semper iaculis, mauris eros scelerisque tellus, sed luctus urna enim nec mi. Nullam sed semper eros. Vivamus non mauris enim. In hac habitasse platea dictumst. Maecenas egestas, enim nec ultricies faucibus, eros enim luctus sapien, id ultricies enim quam id tellus. Nullam semper, eros nec luctus semper, urna enim laoreet enim, sit amet tristique est eros ac ipsum. Donec ac eros ac enim convallis ullamcorper.</p>
+</section>
+    <button id="show-me">Show Me !</button>
+    <div id="top-songs" style="display: none;">
+      <ul>
+        <li><span>#1</span> Time to Pretend</li>
+        <li><span>#2</span> O-o-oh Child</li>
+        <li><span>#3</span> Wish You Were Here</li>
+        <li><span>#4</span> Heroes</li>
+        <li><span>#5</span> I Put a Spell on You</li>
+        <li><span>#6</span> Call Me</li>
+        <li><span>#7</span> Paper Planes</li>
+        <li><span>#8</span> Jolene</li>
+        <li><span>#9</span> You Don't Own Me</li>
+        <li><span>#10</span> Fast Car</li>
+        <li><span>#11</span> Run the World (Girls)</li>
+        <li><span>#12</span> Superstition</li>
+      </ul>
+    </div>
+  </div>
+ 
+</body>
+</html>
