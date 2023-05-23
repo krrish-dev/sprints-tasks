@@ -1,0 +1,101 @@
+/* start first nav */
+@media(max-width:992px){
+    .menu-first-nav{
+        justify-content: center;
+        padding: 0 15px;
+    }
+    .menu-first-nav .nav-left{
+        display: none;
+    }
+    .menu-first-nav .nav-right .account{
+        gap: 2px;
+    }
+    .menu-first-nav .nav-right .account .drop-name {
+        white-space: nowrap;
+        padding: 1px;
+    }
+    .menu-first-nav .nav-right .account .drop.dropmobile.show{
+        right: -35px;
+    }
+    
+    .menu-first-nav .nav-right .shop{
+        display: flex;
+        gap: 7px;
+    }
+    /* end first nav */
+/* start logo nav */
+.section-logo-header{
+    display: none;
+}
+/* end logo nav */
+/* start nav-bar */
+.nav-bar{
+    padding: 7px 15px;
+    position: relative;
+    width: 100%;
+}
+.nav-bar .left .categories{
+    display: none;
+}
+.nav-bar .left{
+    display: block;
+}
+.nav-bar .right{
+    display: none;
+}
+.nav-bar .left .logo{
+    display: flex;
+}
+.nav-bar .mobile-bars{
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 13px;
+}
+.nav-bar .left .links{
+    display: none;
+}
+.nav-bar .left .links.show{
+    display: block;
+}
+.nav-bar .left .links ul{
+    display: block;
+}
+.nav-bar .left .links ul li{
+    margin-top: 15px;
+}
+.nav-bar .left .links ul .pages-drop.show{
+    position: static;
+    width: 100%;
+    padding: 0;
+}
+.nav-bar .left .links ul .pages-drop li:not(:last-of-type){
+    margin-bottom: 0;
+}
+.nav-bar .left .links ul .pages-drop li{
+    padding: 5px;
+}
+
+/* end nav-bar */
+
+/* start header and carousel of Hero section */
+.header{
+    flex-direction: column;
+    padding: 7px 15px;
+}
+.header .special-offer .offer{
+    width: 100%;
+}
+.header .special-offer .offer img{
+    width: 100%;
+}
+/* end header and carousel  of Hero section  */
+/* start service */
+.services{
+    padding: 7px 15px;
+}
+/* end service */
+ 
+ 
+ 
+}
