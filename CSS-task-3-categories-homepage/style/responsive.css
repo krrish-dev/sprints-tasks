@@ -91,9 +91,14 @@
 }
 /* end header and carousel  of Hero section  */
 /* start service */
-.services{
+@media (max-width: 480px) {
+    .services .box {
+      flex-basis: 100%; 
+    }
+  }
+/* .services{
     padding: 7px 15px;
-}
+} */
 /* end service */
 /* start catagories */
 .allcatogries{
