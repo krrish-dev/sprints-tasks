@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js task 1</title>
+</head>
+<body>
+   <input id="num1" type="number" value="2"> <br>
+   <input id="num2" type="number" value="4"> 
+   <br>
+   <div id="result">The result is</div>
+   <br>
+    <button onclick="makeCalc()">Click here</button>
+
+    
+   <!-- idea one inline js  -->
+   <!-- <button onclick="document.getElementById('result').innerHTML = 'Sum: ' + (parseInt(document.getElementById('num1').value) + parseInt(document.getElementById('num2').value)); alert('the result of Sum: ' + (parseInt(document.getElementById('num1').value) + parseInt(document.getElementById('num2').value)))">Click here</button> -->
+
+   <!-- idea two script end of the body -->
+   <!-- <script>
+    function makeCalc() {
+      document.getElementById('result').innerHTML = 'The result: ' + (parseInt(document.getElementById('num1').value) + parseInt(document.getElementById('num2').value));
+    }
+  </script> -->
+
+<!-- external js -->
+<script src="task.js"></script>
+</body>
+</html>
