@@ -10,6 +10,8 @@ function addTask() {
   if (taskName === '') {
     alert('Please enter a task name.');
     return;
+  }else if (Number(taskName)){
+    alert('Please enter a valid task name. not a number');
   }
 
   if (isNaN(priority) || priority <= 0) {
