@@ -1,4 +1,5 @@
 const tasks = [];
+let editedTaskIndex = null;
 
 const addTask = function () {
   const taskNameInput = document.getElementById('taskName');
@@ -33,17 +34,12 @@ const removeTask = function (index) {
 };
 
 const editTask = function (index) {
-  const row = document.getElementById('taskRow_' + index);
-  const nameCell = row.querySelector('.task-name');
-  const priorityCell = row.querySelector('.task-priority');
-  const actionCell = row.querySelector('.task-action');
+  if (editedTaskIndex !== null) {
+//    return ; // Exit the function if there is an active editing task
+  }
 
-  const currentName = nameCell.textContent;
-  const currentPriority = priorityCell.textContent;
-
-  nameCell.innerHTML = createEditableInput('edit-task-name', currentName);
-  priorityCell.innerHTML = createEditableInput('edit-task-priority', currentPriority);
-  actionCell.innerHTML = createSaveCancelButton(index);
+  editedTaskIndex = index;
+  renderTaskList();
 };
 
 const saveTask = function (index) {
@@ -66,10 +62,13 @@ const saveTask = function (index) {
 
   tasks[index].name = newTaskName;
   tasks[index].priority = newPriority;
+
+  editedTaskIndex = null; // Reset the edited task index
   renderTaskList();
 };
 
 const cancelEditTask = function (index) {
+  editedTaskIndex = null; // Reset the edited task index
   renderTaskList();
 };
 
@@ -102,10 +101,10 @@ const renderTaskList = function () {
     row.id = 'taskRow_' + i;
     row.innerHTML = `
       <td>${i + 1}</td>
-      <td class="task-name">${task.name}</td>
-      <td class="task-priority">${task.priority}</td>
+      <td class="task-name">${i === editedTaskIndex ? createEditableInput('edit-task-name', task.name) : task.name}</td>
+      <td class="task-priority">${i === editedTaskIndex ? createEditableInput('edit-task-priority', task.priority) : task.priority}</td>
       <td class="task-action">
-        <button onclick="editTask(${i})" class="btn btn-primary">Edit</button>
+        ${i === editedTaskIndex ? createSaveCancelButton(i) : createEditButton(i)}
         <button onclick="removeTask(${i})" class="btn btn-danger">Remove</button>
       </td>
     `;
@@ -115,6 +114,10 @@ const renderTaskList = function () {
 
 const createEditableInput = function (className, value) {
   return `<input type="text" class="${className}" value="${value}">`;
+};
+
+const createEditButton = function (index) {
+  return `<button onclick="editTask(${index})" class="btn btn-primary">Edit</button>`;
 };
 
 const createSaveCancelButton = function (index) {
@@ -138,4 +141,3 @@ const isValidPriority = function (priority) {
 };
 
 renderTaskList();
-
