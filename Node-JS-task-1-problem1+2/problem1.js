@@ -7,7 +7,7 @@ const data = fs.readFileSync(jsonPath, 'utf8');
 
 const cats = JSON.parse(data);
 
-// Add height and weight to Fluffy
+// Add height and weight to Fluffy 
 cats.name = 'Fluffyy';
 cats.height = 10;
 cats.weight = 5;
