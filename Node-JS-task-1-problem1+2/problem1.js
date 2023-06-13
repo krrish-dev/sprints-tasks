@@ -42,4 +42,9 @@ cats.catFriends.forEach(cat => {
   }
 });
 
+// Console.log catFriends activities
+cats.catFriends.forEach(catFriend => {
+  console.log(`${catFriend.name}'s activities:`, catFriend.activities);
+});
+
 console.log(cats);
