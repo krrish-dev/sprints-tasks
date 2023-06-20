@@ -22,7 +22,7 @@ app.get("/products", async (req, res) => {
     return res.json(await categorizeProducts(cur));
   }
   // Handle other cases or return an appropriate response
-  res.status(400).send("BAD REQUEST");
+  res.status(400).send("you must add Query string /products/?cur=EGP , for list product /products/all");
 });
 
 // GET /products route for fetching all products
