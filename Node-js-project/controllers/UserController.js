@@ -76,9 +76,9 @@ const loginUser = (req, res) => {
         .json({ status: 'error', message: 'Unauthenticated' });
     }
 
-    const token = jwt.sign(user, process.env.JWT_SECRET);
+    const token = jwt.sign({ ...user, roles: user.roles }, process.env.JWT_SECRET);
 
-    return res.status(200).json({ email, password, token });
+    return res.status(200).json({ ...user, token });
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }
