@@ -25,12 +25,14 @@ const createProduct = (req, res) => {
       return;
     }
 
+    const lastProductId = products.length > 0 ? products[products.length - 1].id : 0;
     const newProduct = {
-      id: products.length + 1,
+      id: lastProductId + 1,
       name: productValidation.data.name,
       price: productValidation.data.price,
       category_id: productValidation.data.category_id,
     };
+
     products.push(newProduct);
 
     res.status(201).json({ success: true, product: newProduct });
@@ -38,6 +40,7 @@ const createProduct = (req, res) => {
     res.status(500).json({ error: 'An error occurred while creating the product', details: error.message });
   }
 };
+
 
 const updateProduct = (req, res) => {
   try {

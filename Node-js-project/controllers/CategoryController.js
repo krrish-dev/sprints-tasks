@@ -13,7 +13,9 @@ const createCategory = (req, res) => {
       return;
     }
 
-    const newCategory = { id: categories.length + 1, name };
+    const lastCategoryId = categories.length > 0 ? categories[categories.length - 1].id : 0;
+    const newCategory = { id: lastCategoryId + 1, name };
+
     categories.push(newCategory);
 
     res.status(201).json({ success: true, category: newCategory });
@@ -21,6 +23,7 @@ const createCategory = (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
+
 
 const updateCategory = (req, res) => {
   try {
