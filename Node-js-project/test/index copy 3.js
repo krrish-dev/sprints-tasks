@@ -1,19 +1,19 @@
-const express = require('express');
-const dotenv = require('dotenv');
-dotenv.config();
+// const express = require('express');
+// const dotenv = require('dotenv');
+// dotenv.config();
 
-const app = express();
-app.use(express.json());
+// const app = express();
+// app.use(express.json());
 
-// Import routes
-const authRoutes = require('../routes/authRoutes');
+// // Import routes
+// const authRoutes = require('../routes/authRoutes');
 
-// Register routes
-app.use('/', authRoutes);
+// // Register routes
+// app.use('/', authRoutes);
 
-app.listen(8080, () => {
-  console.log('Server started on http://localhost:8080');
-});
+// app.listen(8080, () => {
+//   console.log('Server started on http://localhost:8080');
+// });
 
 // const express = require('express');
 // const jwt = require('jsonwebtoken');
