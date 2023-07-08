@@ -3,14 +3,46 @@ const User = require('../models/user');
 
 
 const getAllProducts = async (req, res) => {
+  const { minRating, maxRating, page, limit } = req.query;
+  const pageNumber = parseInt(page) || 1;
+  const limitNumber = parseInt(limit) || 10;
+  const skip = (pageNumber - 1) * limitNumber;
+
   try {
-    const products = await Product.find();
-    res.json(products);
+    let query = Product.find();
+
+    // Apply minimum rating filter
+    if (minRating) {
+      const minRatingNumber = parseInt(minRating);
+      query = query.where('rating').gte(minRatingNumber);
+    }
+
+    // Apply maximum rating filter
+    if (maxRating) {
+      const maxRatingNumber = parseInt(maxRating);
+      query = query.where('rating').lte(maxRatingNumber);
+    }
+
+    // Count total products matching the filter
+    const totalProducts = await Product.countDocuments(query);
+
+    // Apply pagination
+    query = query.skip(skip).limit(limitNumber);
+
+    // Execute the query
+    const products = await query.exec();
+
+    res.json({
+      products,
+      currentPage: pageNumber,
+      totalPages: Math.ceil(totalProducts / limitNumber),
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
 
 const getProductById = async (req, res) => {
   const { productId } = req.params;
@@ -27,12 +59,24 @@ const getProductById = async (req, res) => {
   }
 };
 
+
+
 const createProduct = async (req, res) => {
   const { name, price, rating } = req.body;
 
   try {
     // Create a new product
     const newProduct = new Product({ name, price, rating });
+
+    const validationError = newProduct.validateSync();
+
+    if (validationError) {
+      const errors = {};
+      for (let key in validationError.errors) {
+        errors[key] = validationError.errors[key].message;
+      }
+      return res.status(400).json({ errors });
+    }
 
     await newProduct.save();
 
@@ -42,6 +86,8 @@ const createProduct = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+
 
 const updateProduct = async (req, res) => {
   const { productId } = req.params;
@@ -58,6 +104,17 @@ const updateProduct = async (req, res) => {
     product.name = name;
     product.price = price;
     product.rating = rating;
+
+    const validationError = product.validateSync();
+
+    if (validationError) {
+      const errors = {};
+      for (let key in validationError.errors) {
+        errors[key] = validationError.errors[key].message;
+      }
+      return res.status(400).json({ errors });
+    }
+
     await product.save();
 
     res.json({ message: 'Product updated successfully' });
@@ -66,6 +123,8 @@ const updateProduct = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+
 
 const deleteProduct = async (req, res) => {
   const { productId } = req.params;
@@ -88,37 +147,6 @@ const deleteProduct = async (req, res) => {
 };
 
 
-// const purchaseProduct = async (req, res) => {
-//   const { userId, productId } = req.params;
-
-//   try {
-//     // Check if the user exists
-//     const user = await User.findById(userId);
-//     if (!user) {
-//       return res.status(404).json({ error: 'User not found' });
-//     }
-
-//     // Check if the product exists
-//     const product = await Product.findById(productId);
-//     if (!product) {
-//       return res.status(404).json({ error: 'Product not found' });
-//     }
-
-//     // Check if the user has already purchased the product
-//     if (user.products.includes(productId)) {
-//       return res.status(400).json({ error: 'Product already purchased' });
-//     }
-
-//     // Add the product to the user's purchased products
-//     user.products.push(productId);
-//     await user.save();
-
-//     res.json({ message: 'Product purchased successfully' });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: 'Internal server error' });
-//   }
-// };
 const purchaseProduct = async (req, res) => {
   const { userId, productId } = req.params;
 
