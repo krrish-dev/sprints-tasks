@@ -1,0 +1,23 @@
+    Login account  
+    {
+    "email": "krrish@web.dev",
+    "password": "123456"
+    }
+    
+        ##USER_ENDPOINTS##
+    
+    User Registration: POST http://localhost:3000/users/register
+    User Login: POST http://localhost:3000/users/login
+    User Logout: POST http://localhost:3000/users/logout/:userId (requires authentication)
+    -------------------------------------------------------------------------------------------
+
+        ##PRODUCTS_ENDPOINTS##
+
+    Get All Products: GET http://localhost:3000/products
+    GET http://localhost:3000/products/:productId
+    Create Product: POST http://localhost:3000/products (requires authentication)
+    Update Product: PUT http://localhost:3000/products/:productId (requires authentication)
+    Delete Product: DELETE http://localhost:3000/products/:productId (requires authentication)
+    UserPurchaseProduct: POST http://localhost:3000/products/:userId/products/:productId (requires authentication)
+
+     
