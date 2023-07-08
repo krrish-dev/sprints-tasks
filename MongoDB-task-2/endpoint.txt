@@ -20,4 +20,12 @@
     Delete Product: DELETE http://localhost:3000/products/:productId (requires authentication)
     UserPurchaseProduct: POST http://localhost:3000/products/:userId/products/:productId (requires authentication)
 
+
+        #filtration
+    GET http://localhost:3000/products?minRating=<minRating>&maxRating=<maxRating>&page=<page>&limit=<limit>
+
+        Get all products: GET http://localhost:3000/products
+    Get products with a minimum rating of 4: GET http://localhost:3000/products?minRating=4
+    Get products with a maximum rating of 5: GET http://localhost:3000/products?maxRating=5
+    Get products with a minimum rating of 4 and a maximum rating of 5 on page 2 with a limit of 5 products per page: GET http://localhost:3000/products?minRating=4&maxRating=5&page=2&limit=5
      
