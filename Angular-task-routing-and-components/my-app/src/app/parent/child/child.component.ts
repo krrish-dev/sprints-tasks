@@ -1,3 +1,5 @@
+// child.component.ts
+
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -6,12 +8,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./child.component.scss']
 })
 export class ChildComponent {
-  @Input() message!: string; // Non-null assertion
-
+  @Input() messageFromParent!: string;
   @Output() childEvent = new EventEmitter<string>();
 
-  sendMessage() {
+  sendMessageToParent() {
     this.childEvent.emit('Message from child');
   }
 }
-

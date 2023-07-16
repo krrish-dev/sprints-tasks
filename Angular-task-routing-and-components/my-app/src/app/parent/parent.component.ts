@@ -1,3 +1,5 @@
+// parent.component.ts
+
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,7 +10,7 @@ import { Component } from '@angular/core';
 export class ParentComponent {
   parentMessage = 'Message from parent';
 
-    onChildEvent(event: string) {
+  onChildEvent(event: string) {
     console.log('Event received in parent:', event);
   }
 }

@@ -1,5 +1,5 @@
+<!-- parent.component.html -->
+
 <h1>Parent Component</h1>
-<p>Message from parent: {{ parentMessage }}</p>
-<app-child [message]="parentMessage" (childEvent)="onChildEvent($event)"></app-child>
-
-
+<p>Parent Component content...</p>
+<app-child [messageFromParent]="parentMessage" (childEvent)="onChildEvent($event)"></app-child>
