@@ -62,11 +62,11 @@ const getProductById = async (req, res) => {
 
 
 const createProduct = async (req, res) => {
-  const { name, price, rating } = req.body;
+  const { title, price, rating, number_of_stocks } = req.body;
 
   try {
     // Create a new product
-    const newProduct = new Product({ name, price, rating });
+    const newProduct = new Product({ title, price, rating, number_of_stocks });
 
     const validationError = newProduct.validateSync();
 
@@ -87,11 +87,9 @@ const createProduct = async (req, res) => {
   }
 };
 
-
-
 const updateProduct = async (req, res) => {
   const { productId } = req.params;
-  const { name, price, rating } = req.body;
+  const { title, price, rating, number_of_stocks } = req.body;
 
   try {
     // Check if the product exists
@@ -101,9 +99,10 @@ const updateProduct = async (req, res) => {
     }
 
     // Update the product
-    product.name = name;
+    product.title = title;
     product.price = price;
     product.rating = rating;
+    product.number_of_stocks = number_of_stocks;
 
     const validationError = product.validateSync();
 
@@ -123,6 +122,7 @@ const updateProduct = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
 
 
 
@@ -168,6 +168,15 @@ const purchaseProduct = async (req, res) => {
       return res.status(400).json({ error: 'Product already purchased' });
     }
 
+    // Check if the product is in stock
+    if (product.number_of_stocks <= 0) {
+      return res.status(400).json({ error: 'Product out of stock' });
+    }
+
+    // Decrement the number of product stocks
+    product.number_of_stocks--;
+    await product.save();
+
     // Add the product to the user's purchased products
     if (!user.products) {
       user.products = [];
@@ -181,6 +190,7 @@ const purchaseProduct = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
 
 module.exports = {
   getAllProducts,

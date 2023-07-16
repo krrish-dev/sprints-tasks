@@ -4,11 +4,13 @@ const User = require('../models/user');
 const { userSchema } = require('../services/validation');
 
 const registerUser = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, age, email, password } = req.body;
 
   try {
     // Validate user data
-    userSchema.parse({ name, email, password });
+    if (!name || !email || !password) {
+      return res.status(400).json({ error: 'Name, email, and password are required' });
+    }
 
     // Check if the user already exists
     const existingUser = await User.findOne({ email });
@@ -22,6 +24,7 @@ const registerUser = async (req, res) => {
     // Create a new user
     const newUser = new User({
       name,
+      age,
       email,
       password: hashedPassword,
     });
@@ -31,9 +34,10 @@ const registerUser = async (req, res) => {
     res.json({ message: 'User registered successfully' });
   } catch (error) {
     console.error(error);
-    res.status(400).json({ error: 'Invalid user data' });
+    res.status(500).json({ error: 'Internal server error' });
   }
 };
+
 
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
