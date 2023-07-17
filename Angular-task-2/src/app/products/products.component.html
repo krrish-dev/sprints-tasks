@@ -1,0 +1,17 @@
+<filter-root [featuredCount]="featured" [availableCount]="availableCount" [all]="all" (filterChangedEvent)="onFilterChanged($event)"></filter-root>
+<h1>Our Products</h1>
+<div class="productsSection">
+  <div class="product-item" *ngFor="let product of products">
+    <div style="width:fit-content" *ngIf="shouldBeViewed(product)">
+      <div>
+        <img [src]="product.imageProduct" class="product-img">
+      </div>
+      <div class="product-desc">
+        <h2>{{ product.nameProduct }}</h2>
+        <span *ngIf="largerThan100(product)">{{ product.priceProduct }}$</span>
+        <h3 class="h3" *ngIf="product.isAvailable" [ngClass]="{'available': product.isAvailable}">Available</h3>
+        <h3 *ngIf="!product.isAvailable" [ngStyle]="{color: product.isAvailable ? 'Green' : 'Red'}">Not Available</h3>
+      </div>
+    </div>
+  </div>
+</div>
