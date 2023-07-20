@@ -164,7 +164,7 @@ const purchaseProduct = async (req, res) => {
     }
 
     // Check if the user has already purchased the product
-    if (user.products && user.products.includes(productId)) {
+    if (user.purchased_products && user.purchased_products.includes(productId)) {
       return res.status(400).json({ error: 'Product already purchased' });
     }
 
@@ -178,10 +178,10 @@ const purchaseProduct = async (req, res) => {
     await product.save();
 
     // Add the product to the user's purchased products
-    if (!user.products) {
-      user.products = [];
+    if (!user.purchased_products) {
+      user.purchased_products = [];
     }
-    user.products.push(productId);
+    user.purchased_products.push(productId);
     await user.save();
 
     res.json({ message: 'Product purchased successfully' });
