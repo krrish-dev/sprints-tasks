@@ -4,7 +4,8 @@ import { ContactsComponent } from './contacts.component';
 import { AllContactsComponent } from './all-contacts/all-contacts.component';
 
 const routes: Routes = [
-  { path: '', component: AllContactsComponent }
+  { path: '', component: AllContactsComponent },
+  { path: 'all', component: ContactsComponent },
 
   ];
 
