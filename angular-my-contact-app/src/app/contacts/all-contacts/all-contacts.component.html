@@ -1,6 +1,52 @@
-<p>all-contacts works!</p>
-<div *ngFor="let contact of contacts" class="contact-item">
-  <h3>{{ contact.contactName }}</h3>
-  <p>{{ contact.contactNumber }}</p>
+
+<div class="search-bar">
+  <input type="text" placeholder="Search by name or phone" [(ngModel)]="searchName" (input)="searchContacts()">
 </div>
 
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contact of searchResults">
+      <td>{{ contact.id }}</td>
+      <td>
+        <ng-container *ngIf="editingContact && editingContact.id === contact.id">
+          <input type="text" [(ngModel)]="editingContact.contactName">
+        </ng-container>
+        <ng-container *ngIf="!editingContact || editingContact.id !== contact.id">
+          {{ contact.contactName }}
+        </ng-container>
+      </td>
+      <td>
+        <ng-container *ngIf="editingContact && editingContact.id === contact.id">
+          <input type="text" [(ngModel)]="editingContact.contactNumber">
+        </ng-container>
+        <ng-container *ngIf="!editingContact || editingContact.id !== contact.id">
+          {{ contact.contactNumber }}
+        </ng-container>
+      </td>
+      <td>
+        <ng-container *ngIf="!editingContact || editingContact.id !== contact.id">
+          <button (click)="editContact(contact)">Edit</button>
+        </ng-container>
+        <ng-container *ngIf="editingContact && editingContact.id === contact.id">
+          <button (click)="updateContact(editingContact)">Update</button>
+          <button (click)="cancelEdit()">Cancel</button>
+        </ng-container>
+        <button (click)="deleteContact(contact.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="add-contact-form">
+  <input type="text" placeholder="Name" [(ngModel)]="newContact.contactName">
+  <input type="text" placeholder="Phone Number" [(ngModel)]="newContact.contactNumber">
+  <button (click)="addContact()">Add Contact</button>
+</div>

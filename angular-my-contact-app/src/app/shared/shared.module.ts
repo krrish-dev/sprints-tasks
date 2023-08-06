@@ -6,7 +6,7 @@ import { SharedComponent } from './shared.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainlayoutComponent } from './mainlayout/mainlayout.component';
-import { AllContactsComponent } from '../contacts/all-contacts/all-contacts.component'; // Make sure the path is correct
+//import { AllContactsComponent } from '../contacts/all-contacts/all-contacts.component'; // Make sure the path is correct
 
 
 @NgModule({
@@ -15,13 +15,14 @@ import { AllContactsComponent } from '../contacts/all-contacts/all-contacts.comp
     HeaderComponent,
     FooterComponent,
     MainlayoutComponent,
-    AllContactsComponent
+
 
   ],
   imports: [
     CommonModule,
     SharedRoutingModule
   ],
+  exports: [HeaderComponent, FooterComponent , MainlayoutComponent]
 
 })
 export class SharedModule { }
