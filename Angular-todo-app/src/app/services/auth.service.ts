@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
+  static isAuthenticatedUser() {
+    throw new Error('Method not implemented.');
+  }
   private isAuthenticated: boolean = false;
   private baseUrl = 'http://localhost:4000'; // Update with your API URL
 
