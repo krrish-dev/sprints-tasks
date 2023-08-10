@@ -1,0 +1,42 @@
+<!-- <div class="task-list">
+  <div class="task-card" *ngFor="let todo of userTodos">
+    <div class="task-header">
+      <h3>{{ todo.task }}</h3>
+      <mat-icon class="delete-icon" (click)="deleteTodo(todo.id)">delete</mat-icon>
+    </div>
+    <div class="task-status">
+      <p>Status: {{ todo.completed ? 'Completed' : 'Not Completed' }}</p>
+      <button mat-raised-button color="primary" (click)="updateTodoStatus(todo.id, !todo.completed)">
+        {{ todo.completed ? 'Mark Incomplete' : 'Mark Complete' }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="add-task">
+  <mat-form-field>
+    <input matInput type="text" placeholder="New Task" [(ngModel)]="newTask">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="createTodo()">Add Task</button>
+</div> -->
+<div class="task-list">
+  <div class="task-card" *ngFor="let todo of userTodos">
+    <div class="task-header">
+      <h3>{{ todo.task }}</h3>
+      <mat-icon class="delete-icon" (click)="deleteTodo(todo.id)">delete</mat-icon>
+    </div>
+    <div class="task-status">
+      <p>Status: {{ todo.completed ? 'Completed' : 'Not Completed' }}</p>
+      <button mat-raised-button color="primary" (click)="updateTodoStatus(todo.id, !todo.completed)">
+        {{ todo.completed ? 'Mark Incomplete' : 'Mark Complete' }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="add-task">
+  <mat-form-field>
+    <input matInput type="text" placeholder="New Task" [(ngModel)]="newTask">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="createTodo()">Add Task</button>
+</div>

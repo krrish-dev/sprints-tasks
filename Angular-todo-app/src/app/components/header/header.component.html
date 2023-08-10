@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span class="app-title">todo app</span>
+    <span class="fill-space"></span>
+    <div *ngIf="authService.isAuthenticatedUser()">
+      <span>{{ authService.currentUser?.name }}</span>
+      <img class="avatar" [src]="authService.currentUser?.avatar" alt="User Avatar">
+      <button mat-icon-button (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </div>
+    <div *ngIf="!authService.isAuthenticatedUser()">
+      <button mat-button routerLink="/login">Login</button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+

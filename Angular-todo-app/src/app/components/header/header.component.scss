@@ -1,0 +1,19 @@
+.mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+
+  .spacer {
+    flex: 1 1 auto;
+  }
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-left: 8px;
+}
+
+.fill-space {
+  flex: 1;
+}

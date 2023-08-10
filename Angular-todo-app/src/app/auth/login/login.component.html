@@ -1,0 +1,27 @@
+<div class="login-container">
+  <h2>Login</h2>
+
+  <!-- Display the selected user's avatar if available -->
+  <div *ngIf="selectedUser">
+    <img src="{{ selectedUser.avatar }}" alt="User Avatar" class="avatar">
+  </div>
+
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <mat-form-field class="form-field">
+      <mat-label>Username</mat-label>
+      <mat-select formControlName="username" required (selectionChange)="onUserSelect($event.value)">
+        <mat-option *ngFor="let user of users" [value]="user.username">
+          {{ user.username }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="form-field">
+      <input matInput type="password" placeholder="Password" formControlName="password" required>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Login</button>
+  </form>
+</div>
+
+
+
+
