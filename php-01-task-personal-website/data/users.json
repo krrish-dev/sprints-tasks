@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Kerlos badr",
+    "email": "justbegintoday@gmail.com",
+    "bio": "Web Developer",
+    "avatar": "avatar.png"
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "email": "jane@example.com",
+    "bio": "Graphic Designer",
+    "avatar": "avatar.png"
+  },
+  {
+    "id": 3,
+    "name": "Michael Johnson",
+    "email": "michael@example.com",
+    "bio": "Software Engineer",
+    "avatar": "avatar.png"
+  },
+  {
+    "id": 4,
+    "name": "Emily Brown",
+    "email": "emily@example.com",
+    "bio": "UI/UX Designer",
+    "avatar": "avatar.png"
+  },
+  {
+    "id": 5,
+    "name": "William Davis",
+    "email": "william@example.com",
+    "bio": "Data Scientist",
+    "avatar": "avatar.png"
+  },
+  {
+    "id": 6,
+    "name": "Olivia Wilson",
+    "email": "olivia@example.com",
+    "bio": "Content Creator",
+    "avatar": "avatar.png"
+  },
+  {
+    "id": 7,
+    "name": "James Martinez",
+    "email": "james@example.com",
+    "bio": "Marketing Specialist",
+    "avatar": "avatar.png"
+  },
+  {
+    "id": 8,
+    "name": "Sophia Anderson",
+    "email": "sophia@example.com",
+    "bio": "Project Manager",
+    "avatar": "avatar.png"
+  } 
+]
